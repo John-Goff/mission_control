@@ -7,9 +7,10 @@ defmodule MissionCommand.Application do
 
   @impl true
   def start(_type, _args) do
+    Nx.global_default_backend({EXLA.Backend, client: :host})
+
     children = [
-      # Starts a worker by calling: MissionCommand.Worker.start_link(arg)
-      # {MissionCommand.Worker, arg}
+      MissionCommand.Chat
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
